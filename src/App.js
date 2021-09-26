@@ -8,21 +8,39 @@ import data from './data.json';
 
 function App() {
 
-  let active = 1;
-  let items = []
-  for (let number = 1; number <= 5; number++) {
+  let items = [];
+  let paginationCount = Math.ceil(data.length/5);
+  const [state, setState] = useState({
+    flow: ["VAL_ID", "VAL_EOD"],
+    system: [],
+    tableData : data.slice(0,5),
+    active : 1,
+    start : 0,
+    end : 5
+  });
+
+  const handlePagination = (number) => {
+    
+     const start = number*5 -5;
+     const end = number*5 > data.length ? data.length : number * 5;;
+     const tableData = data.slice(start,end);
+
+     setState({...state, start: start, end:end, tableData : tableData,active : number})
+  }
+
+  for (let number = 1; number <= paginationCount; number++) {
     items.push(
-      <Pagination.Item key={number} active={number === active}>
+      <Pagination.Item key={number} active={state.active === number} onClick={() => handlePagination(number)}>
         {number}
       </Pagination.Item>,
     );
   }
-  const [state, setState] = useState({
-    flow: ["VAL_ID", "VAL_EOD"],
-    system: ["ENDUR" , "EPS"]
-  });
+
+  
 
   const handleD1 = (event) => {
+     const systemValue = event.target.value === "VAL_EOD" ? ["ENDUR" , "EPS"] :  [] ;
+     setState({...state, system : systemValue});
   };
 
   const handleD2 = (event) => {
@@ -77,9 +95,9 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              { data && data.map( item => {
+              { state.tableData && state.tableData.map( item => {
                  return (
-                   <tr>
+                   <tr key= {item.batchVersion}>
                      <td>{item.sourceBatchDate}</td>
                      <td>{item.sourceBatchNumber}</td>
                      <td>{item.batchVersion}</td>
