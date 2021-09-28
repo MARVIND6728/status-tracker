@@ -13,19 +13,19 @@ import { Link } from "react-router-dom";
 
 const Details = () => {
   let items = [];
-  let paginationCount = Math.ceil(data.length / 5);
+  let paginationCount = Math.ceil(data.length / 10);
   const [state, setState] = useState({
     flow: ["VAL_ID", "VAL_EOD"],
     system: [],
-    tableData: data.slice(0, 5),
+    tableData: data.slice(0, 10),
     active: 1,
     start: 0,
-    end: 5,
+    end: 10,
   });
 
   const handlePagination = (number) => {
-    const start = number * 5 - 5;
-    const end = number * 5 > data.length ? data.length : number * 5;
+    const start = number * 10 - 10;
+    const end = number * 10 > data.length ? data.length : number * 10;
     const tableData = data.slice(start, end);
 
     setState({
@@ -90,27 +90,29 @@ const Details = () => {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>Batch Date</th>
-              <th>Batch Number</th>
-              <th>Batch Version</th>
-              <th>Source Run Date</th>
-              <th>Controller Status Code</th>
-              <th>Batch Count</th>
-              <th>Publish Status</th>
-              <th>Target Status</th>
+                <th>Header key</th>
+                <th>Batch Date</th>
+                <th>Batch Number</th>
+                <th>Batch Version</th>
+                <th>Source Run Date</th>
+                <th>Controller Status</th>                
+                <th>Batch Count</th>
+                <th>Publisher Status</th>
+                <th>Subscriber Status</th>
             </tr>
           </thead>
           <tbody>
             {state.tableData &&
               state.tableData.map((item) => {
                 return (
-                  <tr key={item.batchVersion}>
-                    <td>{item.batchDate}</td>
-                    <td>{item.batchNumber}</td>
-                    <td>{item.batchVersion}</td>
-                    <td>{item.sourceRunDate}</td>
-                    <td>{item.controllerStatusCode}</td>
-                    <td>{item.batchCount}</td>
+                  <tr key= {item.headerKey}>
+                     <td>{item.headerKey}</td>
+                     <td>{item.batchDate}</td>
+                     <td>{item.batchNumber}</td>
+                     <td>{item.batchVersion}</td>
+                     <td>{item.sourceRunDate}</td>
+                     <td>{item.controllerStatus}</td>                    
+                     <td>{item.batchCount}</td>
                     <td>
                       <Link
                         to={{
@@ -124,7 +126,7 @@ const Details = () => {
                     <td>
                       <Link to={{
                           pathname: "/summary",
-                          state : {type: "targetStatus"}
+                          state : {type: "subscriberStatus"}
                         }}>
                         {item.subscriberStatus}
                       </Link>

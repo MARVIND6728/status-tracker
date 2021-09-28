@@ -17,20 +17,20 @@ const Summary = () => {
   const location = useLocation();
   const data = location.state.type === 'publisherStatus' ? publisherStatusData : targetStatusData;
 
-  let paginationCount = Math.ceil(data.length / 5);
+  let paginationCount = Math.ceil(data.length / 10);
   const [state, setState] = useState({
     flow: ["VAL_ID", "VAL_EOD"],
     system: [],
-    tableData: data.slice(0, 5),
-    pub_sub: ["Publish Status", "Target Status"],
+    tableData: data.slice(0, 10),
+    pub_sub: ["Publisher Status", "Subscriber Status"],
     active: 1,
     start: 0,
-    end: 5,
+    end: 10,
   });
 
   const handlePagination = (number) => {
-    const start = number * 5 - 5;
-    const end = number * 5 > data.length ? data.length : number * 5;
+    const start = number * 10 - 10;
+    const end = number * 10 > data.length ? data.length : number * 10;
     const tableData = data.slice(start, end);
 
     setState({
