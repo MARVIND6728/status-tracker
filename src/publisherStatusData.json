@@ -1,0 +1,1432 @@
+[
+  {
+    "executionKey": 315,
+    "typeCD": "OPT",
+    "fileName": "",
+    "recordCount": 19433,
+    "attributeCount": 59,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 241537 AND 265378",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 316,
+    "typeCD": "OPT",
+    "fileName": "",
+    "recordCount": 19806,
+    "attributeCount": 274,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 268411 AND 1571510",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 317,
+    "typeCD": "OPT",
+    "fileName": "",
+    "recordCount": 19999,
+    "attributeCount": 14923,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1571511 AND 16245804",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 318,
+    "typeCD": "OPT",
+    "fileName": "",
+    "recordCount": 5706,
+    "attributeCount": 4837,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16245805 AND 16501876",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 319,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19904,
+    "attributeCount": 216,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 23087 AND 31445",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 320,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19992,
+    "attributeCount": 235,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 31469 AND 49000",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 321,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19936,
+    "attributeCount": 115,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 49004 AND 53480",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 322,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19712,
+    "attributeCount": 247,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 53484 AND 121606",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 323,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19984,
+    "attributeCount": 156,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 121685 AND 180528",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 324,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19986,
+    "attributeCount": 651,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 180623 AND 480694",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 325,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19992,
+    "attributeCount": 463,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 480697 AND 588948",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 326,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19962,
+    "attributeCount": 425,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 588949 AND 719317",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 327,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19986,
+    "attributeCount": 619,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 719318 AND 863099",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 328,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19938,
+    "attributeCount": 246,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 863102 AND 921200",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 329,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19936,
+    "attributeCount": 423,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 921201 AND 1003169",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 330,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19986,
+    "attributeCount": 593,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1003170 AND 1059082",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 331,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19816,
+    "attributeCount": 47,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1059083 AND 1063443",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 332,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19962,
+    "attributeCount": 189,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1063444 AND 1073254",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 333,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19982,
+    "attributeCount": 594,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1073409 AND 1144493",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 334,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19960,
+    "attributeCount": 399,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1144500 AND 1183692",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 335,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19994,
+    "attributeCount": 314,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1183693 AND 1257702",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 336,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19990,
+    "attributeCount": 628,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1257703 AND 1407699",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 337,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19512,
+    "attributeCount": 797,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1407704 AND 1524238",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 338,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19984,
+    "attributeCount": 771,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1524239 AND 1576372",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 339,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19978,
+    "attributeCount": 980,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1576380 AND 1613038",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 340,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19698,
+    "attributeCount": 146,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1613058 AND 1618003",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 341,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19936,
+    "attributeCount": 1136,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 1618004 AND 2162392",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 342,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19992,
+    "attributeCount": 1545,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2162393 AND 14095829",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 343,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 1806,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14095831 AND 14192794",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 344,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 2028,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14192894 AND 14307031",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 345,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19996,
+    "attributeCount": 1863,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14307051 AND 14400668",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 346,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19990,
+    "attributeCount": 2822,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14400942 AND 14491470",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 347,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19930,
+    "attributeCount": 2744,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14491531 AND 14584354",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 348,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19996,
+    "attributeCount": 2865,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14584418 AND 14654338",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 349,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 2447,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14654493 AND 14729249",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 350,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 3779,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14729306 AND 14797176",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 351,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19990,
+    "attributeCount": 4384,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14797177 AND 14846229",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 352,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 3048,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14846248 AND 14897570",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 353,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19986,
+    "attributeCount": 3656,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14897611 AND 14929557",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 354,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 3912,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14929728 AND 15007755",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 355,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 5186,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15007762 AND 15068593",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 356,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19994,
+    "attributeCount": 5643,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15068594 AND 15153036",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 357,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19988,
+    "attributeCount": 7093,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15153037 AND 15211363",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 358,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19978,
+    "attributeCount": 6050,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15211399 AND 15269279",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 359,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 5329,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15269280 AND 15334221",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 360,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 6367,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15334222 AND 15372845",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 361,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19988,
+    "attributeCount": 4229,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15372846 AND 15407306",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 362,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19982,
+    "attributeCount": 5054,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15407307 AND 15452910",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 363,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 6365,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15452911 AND 15500147",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 364,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19986,
+    "attributeCount": 5967,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15500148 AND 15535623",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 365,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19986,
+    "attributeCount": 5737,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15536127 AND 15571827",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 366,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 7202,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15571915 AND 15608076",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 367,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 6081,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15608077 AND 15656240",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 368,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19986,
+    "attributeCount": 5725,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15656242 AND 15690320",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 369,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19978,
+    "attributeCount": 6059,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15690321 AND 15725212",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 370,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 5334,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15725213 AND 15769588",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 371,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 7091,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15769589 AND 15807261",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 372,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 6033,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15807274 AND 15839323",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 373,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19984,
+    "attributeCount": 5796,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15839324 AND 15879288",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 374,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19986,
+    "attributeCount": 5520,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15879320 AND 15917257",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 375,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19994,
+    "attributeCount": 6609,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15917258 AND 15973468",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 376,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 5872,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15973473 AND 16009968",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 377,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 6754,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16009969 AND 16046591",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 378,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19966,
+    "attributeCount": 6551,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16046592 AND 16088303",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 379,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 5843,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16088304 AND 16137349",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 380,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 4707,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16137350 AND 16168285",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 381,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19988,
+    "attributeCount": 4623,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16168295 AND 16212592",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 382,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19970,
+    "attributeCount": 5269,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16212597 AND 16244896",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 383,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 5131,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16244897 AND 16286370",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 384,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19978,
+    "attributeCount": 4592,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16286371 AND 16322330",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 385,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 3200,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16322331 AND 16342222",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 386,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19976,
+    "attributeCount": 6271,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16342223 AND 16385461",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 387,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 5213,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16385462 AND 16432895",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 388,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 6225,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16432897 AND 16477501",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 389,
+    "typeCD": "SWP",
+    "fileName": "",
+    "recordCount": 16466,
+    "attributeCount": 4272,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16477506 AND 16501933",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 390,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19990,
+    "attributeCount": 254,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2001230 AND 2005431",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 391,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19970,
+    "attributeCount": 352,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2005435 AND 2007944",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 392,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19984,
+    "attributeCount": 332,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2007955 AND 2010114",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 393,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19988,
+    "attributeCount": 266,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2010121 AND 2013720",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 394,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19888,
+    "attributeCount": 277,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2013731 AND 2017448",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 395,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19964,
+    "attributeCount": 295,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2017450 AND 2021075",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 396,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19910,
+    "attributeCount": 320,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2021086 AND 2023655",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 397,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19914,
+    "attributeCount": 228,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2023663 AND 2025041",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 398,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19654,
+    "attributeCount": 315,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2025042 AND 14065646",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 399,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19996,
+    "attributeCount": 485,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14066077 AND 14286416",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 400,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19628,
+    "attributeCount": 279,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14286417 AND 14403930",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 401,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 16164,
+    "attributeCount": 310,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14404085 AND 14539028",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 402,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19978,
+    "attributeCount": 624,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14539554 AND 14822077",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 403,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19992,
+    "attributeCount": 407,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14822082 AND 14918797",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 404,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19968,
+    "attributeCount": 1893,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14918874 AND 15227336",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 405,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19986,
+    "attributeCount": 4130,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15227462 AND 15346405",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 406,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 6459,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15346445 AND 15445024",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 407,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 7058,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15445032 AND 15514735",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 408,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19980,
+    "attributeCount": 6243,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15514739 AND 15595172",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 409,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19991,
+    "attributeCount": 5946,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15595216 AND 15661155",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 410,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 5907,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15661175 AND 15697091",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 411,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19990,
+    "attributeCount": 3813,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15697092 AND 15719160",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 412,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 5318,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15719161 AND 15742407",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 413,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 7267,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15742416 AND 15813375",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 414,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19898,
+    "attributeCount": 6841,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15813376 AND 15861549",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 415,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 8381,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15861608 AND 15906829",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 416,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 7743,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15906830 AND 15935338",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 417,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 8188,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15935339 AND 15973666",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 418,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 8360,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15973667 AND 16006187",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 419,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 6832,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16006188 AND 16038330",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 420,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 8692,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16038338 AND 16068108",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 421,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19980,
+    "attributeCount": 7199,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16068109 AND 16090576",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 422,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19976,
+    "attributeCount": 7705,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16090578 AND 16126271",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 423,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19990,
+    "attributeCount": 6679,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16126272 AND 16150474",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 424,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 6850,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16150475 AND 16170779",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 425,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 5660,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16170781 AND 16192612",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 426,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 8604,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16192647 AND 16212845",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 427,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19976,
+    "attributeCount": 7668,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16212846 AND 16231375",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 428,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 5312,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16231376 AND 16244431",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 429,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 8920,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16244432 AND 16270409",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 430,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19996,
+    "attributeCount": 7858,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16270410 AND 16289151",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 431,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19930,
+    "attributeCount": 7605,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16289153 AND 16316088",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 432,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19996,
+    "attributeCount": 8256,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16316100 AND 16335471",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 433,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 8305,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16335472 AND 16361706",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 434,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 7116,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16361707 AND 16383249",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 435,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 8736,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16383250 AND 16413331",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 436,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 7661,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16413332 AND 16434969",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 437,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 7277,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16434970 AND 16457244",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 438,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 8615,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16457245 AND 16491470",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 439,
+    "typeCD": "PHY",
+    "fileName": "",
+    "recordCount": 7506,
+    "attributeCount": 2904,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16491471 AND 16502040",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 440,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19976,
+    "attributeCount": 181,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2002434 AND 2004239",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 441,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19886,
+    "attributeCount": 180,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2004251 AND 2011828",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 442,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19996,
+    "attributeCount": 290,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2011829 AND 2015044",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 443,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19951,
+    "attributeCount": 258,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2015046 AND 2017246",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 444,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19980,
+    "attributeCount": 211,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2017250 AND 2019914",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 445,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19946,
+    "attributeCount": 204,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2019970 AND 2021548",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 446,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19855,
+    "attributeCount": 613,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2021562 AND 2025666",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 447,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19962,
+    "attributeCount": 488,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2025667 AND 2026212",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 448,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19989,
+    "attributeCount": 1159,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2026213 AND 2028919",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 449,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19979,
+    "attributeCount": 1419,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 2028921 AND 14025697",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 450,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19992,
+    "attributeCount": 2293,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14027890 AND 14417734",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 451,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19999,
+    "attributeCount": 2788,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14417787 AND 14639193",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 452,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19990,
+    "attributeCount": 3536,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 14639194 AND 15068389",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 453,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19994,
+    "attributeCount": 3874,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15068592 AND 15413566",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 454,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19906,
+    "attributeCount": 3762,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15413567 AND 15746461",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 455,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19998,
+    "attributeCount": 4244,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 15746463 AND 16179616",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 456,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 19973,
+    "attributeCount": 3726,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16179617 AND 16416290",
+    "status": "InProgress (Internal)"
+  },
+  {
+    "executionKey": 457,
+    "typeCD": "TRANS",
+    "fileName": "",
+    "recordCount": 7025,
+    "attributeCount": 1045,
+    "version": 1,
+    "whereCondition": "TRADE_ID BETWEEN 16416291 AND 16500025",
+    "status": "InProgress (Internal)"
+  }
+]
