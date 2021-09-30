@@ -1,26 +1,56 @@
 import React, { useState } from "react";
 import Select from "../Select";
 import {
-  Button,
   Container,
   Row,
   Col,
   Table,
   Pagination,
 } from "react-bootstrap";
-import data from "../../data.json";
-import { Link } from "react-router-dom";
+import targetStatusData from "../../targetStatusData.json";
+import publisherStatusData from "../../publisherStatusData.json";
+import {useLocation} from 'react-router-dom';
+import Date from '../Date';
+import Button from '../Button';
+import TextField from "@mui/material/TextField";
+import DataTable from "../DataTable";
+
 
 const Details = () => {
+
+  
+
   let items = [];
-  let paginationCount = Math.ceil(data.length / 10);
+  const location = useLocation();
+  const data = location.state && location.state.type === 'Publisher Status' ? publisherStatusData : targetStatusData;
   const [state, setState] = useState({
     flow: ["VAL_ID", "VAL_EOD"],
     system: [],
     tableData: data.slice(0, 10),
+    pub_sub: ["Publisher Status", "Subscriber Status"],
     active: 1,
     start: 0,
     end: 10,
+  });
+
+
+  let paginationCount = Math.ceil(data.length / 10);
+
+ const columns = [
+    { field: "executionKey", headerName: "Execution Key", width: 120 },
+    { field: "typeCD", headerName: "Type CD", width: 90 },
+    { field: "target", headerName: "Target", width: 90 },
+    { field: "fileName", headerName: "FileName", width: 100 },
+    { field: "recordCount", headerName: "Record Count", width: 120 },
+    { field: "attributeCount", headerName: "Attribute Count", width: 145 },
+    { field: "version", headerName: "Version", width: 90 },
+    { field: "whereCondition", headerName: "Where Condition", width: 350},
+    { field: "status", headerName: "Status", width: 100 }
+  ];
+
+  const rows = data.map((item, index) => {
+    item["id"] = index;
+    return item;
   });
 
   const handlePagination = (number) => {
@@ -59,84 +89,73 @@ const Details = () => {
   return (
     <Container
       style={{
-        border: "solid green 2px",
+        // border: "solid green 2px",
         padding: "50px",
         marginBottom: "50px",
       }}
     >
       <Row style={{ marginBottom: "50px" }}>
         <Col>
-          Flow &nbsp;&nbsp;&nbsp;{" "}
-          <Select items={state.flow} changeHandler={handleD1} id="flow" />
+          <Select items={state.flow} changeHandler={handleD1} id="flow" label="Flow" value={location.state.selectedFlow}/>
         </Col>
         <Col>
-          System &nbsp;&nbsp;&nbsp;
-          <Select items={state.system} changeHandler={handleD2} id="system" />
+          <Select items={location.state.system || state.system} changeHandler={handleD2} id="system" label="System" value={location.state.selectedSystem}/>
         </Col>
         <Col>
-          From Date &nbsp;&nbsp;&nbsp; <input type="date" id="toDate" />
+          <Date label="Batch Date" value={location.state.batchDate}/>
         </Col>
         <Col>
-          To Date &nbsp;&nbsp;&nbsp;
-          <input type="date" id="fromDate" />
+          <TextField id="outlined-basic" label="Batch Version" variant="outlined" value={location.state.batchVersion} />
+        </Col>
+        <Col>
+          <Select items={state.pub_sub} changeHandler={handleD2} id="system" label="PUB_SUB" value={location.state.type}/>
         </Col>
       </Row>
       <Row style={{ marginBottom: "75px", textAlign: "center" }}>
         <Col>
-          <Button variant="success">Search</Button>
+           <Button label="Search"/>
         </Col>
       </Row>
-      <Row>
+      {/* <Row>
         <Table striped bordered hover>
           <thead>
             <tr>
-                <th>Header key</th>
-                <th>Batch Date</th>
-                <th>Batch Number</th>
-                <th>Batch Version</th>
-                <th>Source Run Date</th>
-                <th>Controller Status</th>                
-                <th>Batch Count</th>
-                <th>Publisher Status</th>
-                <th>Subscriber Status</th>
+              <th>Execution Key</th>
+              <th>Type CD</th>
+              <th>Target</th>
+              <th>FileName</th>
+              <th>Record Count</th>
+              <th>Attribute Count</th>
+              <th>Version</th>
+              <th>Where Condition</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
             {state.tableData &&
               state.tableData.map((item) => {
                 return (
-                  <tr key= {item.headerKey}>
-                     <td>{item.headerKey}</td>
-                     <td>{item.batchDate}</td>
-                     <td>{item.batchNumber}</td>
-                     <td>{item.batchVersion}</td>
-                     <td>{item.sourceRunDate}</td>
-                     <td>{item.controllerStatus}</td>                    
-                     <td>{item.batchCount}</td>
-                    <td>
-                      <Link
-                        to={{
-                          pathname: "/summary",
-                          state : {type: "publisherStatus"}
-                        }}
-                      >
-                        {item.publisherStatus}
-                      </Link>
-                    </td>
-                    <td>
-                      <Link to={{
-                          pathname: "/summary",
-                          state : {type: "subscriberStatus"}
-                        }}>
-                        {item.subscriberStatus}
-                      </Link>
-                    </td>
+                  <tr key={item.executionKey}>
+                    <td>{item.executionKey}</td>
+                    <td>{item.typeCD}</td>
+                    <td>{item.target}</td>
+                    <td>{item.fileName}</td>
+                    <td>{item.recordCount}</td>
+                    <td>{item.attributeCount}</td>
+                    <td>{item.version}</td>
+                    <td>{item.whereCondition}</td>
+                    <td>{item.status}</td>
                   </tr>
                 );
               })}
           </tbody>
         </Table>
-        <Pagination>{items}</Pagination>
+        <Pagination>
+          {items}
+        </Pagination>
+      </Row> */}
+      <Row>
+        <DataTable columns={columns} rows={rows} />
       </Row>
     </Container>
   );

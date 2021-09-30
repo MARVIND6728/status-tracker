@@ -1,32 +1,71 @@
 import React, { useState } from "react";
-import Select from "../Select";
-import {
-  Button,
-  Container,
-  Row,
-  Col,
-  Table,
-  Pagination,
-} from "react-bootstrap";
-import targetStatusData from "../../targetStatusData.json";
-import publisherStatusData from "../../publisherStatusData.json";
-import {useLocation} from 'react-router-dom';
+import BasicSelect from "../Select";
+import Date from "../Date";
+import { Container, Row, Col, Table, Pagination } from "react-bootstrap";
+import data from "../../data.json";
+import { Link } from "react-router-dom";
+import Button from "../Button";
+import DataTable from "../DataTable";
 
 const Summary = () => {
-  let items = [];
-  const location = useLocation();
-  const data = location.state.type === 'publisherStatus' ? publisherStatusData : targetStatusData;
 
-  let paginationCount = Math.ceil(data.length / 10);
   const [state, setState] = useState({
     flow: ["VAL_ID", "VAL_EOD"],
-    system: [],
+    system: [""],
     tableData: data.slice(0, 10),
-    pub_sub: ["Publisher Status", "Subscriber Status"],
     active: 1,
     start: 0,
     end: 10,
   });
+
+  const columns = [
+    { field: "headerKey", headerName: "Header key", width: 100 },
+    { field: "batchDate", headerName: "Batch Date", width: 170 },
+    { field: "batchNumber", headerName: "Batch Number", width: 120 },
+    { field: "batchVersion", headerName: "Batch Version", width: 115 },
+    { field: "sourceRunDate", headerName: "Source Run Date", width: 170 },
+    { field: "controllerStatus", headerName: "Controller Status", width: 145 },
+    { field: "batchCount", headerName: "Batch Count", width: 110 },
+    { field: "publisherStatus", headerName: "Publisher Status", width: 140, renderCell: (params) => {
+        return (<Link
+            to={{
+              pathname: "/details",
+              state: {
+                ...state,
+                type: "Publisher Status",
+                batchDate: params.row.batchDate,
+                batchVersion: params.row.batchVersion,
+              },
+            }}
+          >
+            {params.value}
+          </Link>)
+    }},
+    { field: "subscriberStatus", headerName: "Subscriber Status", width: 140 , renderCell: (params) => {
+      return (<Link
+          to={{
+            pathname: "/details",
+            state: {
+              ...state,
+              type: "Subscriber Status",
+              batchDate: params.row.batchDate,
+              batchVersion: params.row.batchVersion,
+            },
+          }}
+        >
+          {params.value}
+        </Link>)}
+    }
+  ];
+
+  const rows = data.map((item, index) => {
+    item["id"] = index;
+    return item;
+  });
+
+  let items = [];
+  let paginationCount = Math.ceil(data.length / 10);
+  
 
   const handlePagination = (number) => {
     const start = number * 10 - 10;
@@ -54,81 +93,129 @@ const Summary = () => {
     );
   }
 
-  const handleD1 = (event) => {
+  const handleFlowChange = (event) => {
     const systemValue =
       event.target.value === "VAL_EOD" ? ["ENDUR", "EPS"] : [];
-    setState({ ...state, system: systemValue });
+    setState({
+      ...state,
+      system: systemValue,
+      selectedFlow: event.target.value,
+    });
   };
 
-  const handleD2 = (event) => {};
   return (
     <Container
       style={{
-        border: "solid green 2px",
+        /*border: "solid green 2px",*/
         padding: "50px",
         marginBottom: "50px",
       }}
     >
       <Row style={{ marginBottom: "50px" }}>
         <Col>
-          Flow &nbsp;&nbsp;&nbsp;{" "}
-          <Select items={state.flow} changeHandler={handleD1} id="flow" />
+          <BasicSelect
+            items={state.flow}
+            changeHandler={handleFlowChange}
+            id="flow"
+            label="Flow"
+          />
         </Col>
         <Col>
-          System &nbsp;&nbsp;&nbsp;
-          <Select items={state.system} changeHandler={handleD2} id="system" />
+          <BasicSelect
+            label="System"
+            items={state.system}
+            changeHandler={(e) =>
+              setState({ ...state, selectedSystem: e.target.value })
+            }
+            id="system"
+          />
         </Col>
         <Col>
-          Batch Date &nbsp;&nbsp;&nbsp; <input type="date" id="batchDate" />
+          <Date
+            id="fromDate"
+            onChange={(e) => setState({ ...state, fromDate: e.target.value })}
+            label="From Date"
+          />
         </Col>
         <Col>
-          Version &nbsp;&nbsp;&nbsp; <input type="text" id="version" />
-        </Col>
-        <Col>
-          PUB_SUB &nbsp;&nbsp;&nbsp;
-          <Select items={state.pub_sub} changeHandler={handleD2} id="system" />
+          <Date
+            id="toDate"
+            onChange={(e) => setState({ ...state, toDate: e.target.value })}
+            label="To Date"
+          />
         </Col>
       </Row>
       <Row style={{ marginBottom: "75px", textAlign: "center" }}>
         <Col>
-          <Button variant="success">Search</Button>
+          <Button label="Search" />
         </Col>
       </Row>
-      <Row>
+      {/* <Row>
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>Execution Key</th>
-              <th>Type CD</th>
-              <th>Target</th>
-              <th>FileName</th>
-              <th>Record Count</th>
-              <th>Attribute Count</th>
-              <th>Version</th>
-              <th>Where Condition</th>
-              <th>Status</th>
+              <th>Header key</th>
+              <th>Batch Date</th>
+              <th>Batch Number</th>
+              <th>Batch Version</th>
+              <th>Source Run Date</th>
+              <th>Controller Status</th>
+              <th>Batch Count</th>
+              <th>Publisher Status</th>
+              <th>Subscriber Status</th>
             </tr>
           </thead>
           <tbody>
             {state.tableData &&
               state.tableData.map((item) => {
                 return (
-                  <tr key={item.executionKey}>
-                    <td>{item.executionKey}</td>
-                    <td>{item.typeCD}</td>
-                    <td>{item.target}</td>
-                    <td>{item.fileName}</td>
-                    <td>{item.recordCount}</td>
-                    <td>{item.attributeCount}</td>
-                    <td>{item.version}</td>
-                    <td>{item.whereCondition}</td>
-                    <td>{item.status}</td>
+                  <tr key={item.headerKey}>
+                    <td>{item.headerKey}</td>
+                    <td>{item.batchDate}</td>
+                    <td>{item.batchNumber}</td>
+                    <td>{item.batchVersion}</td>
+                    <td>{item.sourceRunDate}</td>
+                    <td>{item.controllerStatus}</td>
+                    <td>{item.batchCount}</td>
+                    <td>
+                      <Link
+                        to={{
+                          pathname: "/details",
+                          state: {
+                            ...state,
+                            type: "Publisher Status",
+                            batchDate: item.batchDate,
+                            batchVersion: item.batchVersion,
+                          },
+                        }}
+                      >
+                        {item.publisherStatus}
+                      </Link>
+                    </td>
+                    <td>
+                      <Link
+                        to={{
+                          pathname: "/details",
+                          state: {
+                            ...state,
+                            type: "Subscriber Status",
+                            batchDate: item.batchDate,
+                            batchVersion: item.batchVersion,
+                          },
+                        }}
+                      >
+                        {item.subscriberStatus}
+                      </Link>
+                    </td>
                   </tr>
                 );
               })}
           </tbody>
         </Table>
         <Pagination>{items}</Pagination>
+      </Row> */}
+      <Row>
+        <DataTable columns={columns} rows={rows} />
       </Row>
     </Container>
   );
