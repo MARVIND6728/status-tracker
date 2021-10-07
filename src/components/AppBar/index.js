@@ -22,7 +22,7 @@ export default function ButtonAppBar() {
           >
             STATUS TRACKNG PORTAL
           </Typography>
-          <Button><Link to="/" style={{color: "green",textDecoration : "none"}}><h6 style={{fontWeight: "bolder"}}>Summary</h6></Link></Button>
+          <Button><Link to="/" style={{color: "green"}}><h6 style={{fontWeight: "bolder"}}>Summary</h6></Link></Button>
           <Button><Link to={{
               pathname: "/details",
               state: {
@@ -32,7 +32,7 @@ export default function ButtonAppBar() {
                 batchDate: "",
                 batchVersion: "",
               },
-            }} style={{color: "green",textDecoration : "none"}}><h6 style={{fontWeight: "bolder"}}>Details</h6></Link></Button>
+            }} style={{color: "green"}}><h6 style={{fontWeight: "bolder"}}>Details</h6></Link></Button>
         </Toolbar>
       </AppBar>
     </Box>
