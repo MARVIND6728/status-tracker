@@ -8,7 +8,6 @@ import Button from "../Button";
 import DataTable from "../DataTable";
 
 const Summary = () => {
-
   const [state, setState] = useState({
     flow: ["VAL_ID", "VAL_EOD"],
     system: [""],
@@ -26,8 +25,13 @@ const Summary = () => {
     { field: "sourceRunDate", headerName: "Source Run Date", width: 170 },
     { field: "controllerStatus", headerName: "Controller Status", width: 145 },
     { field: "batchCount", headerName: "Batch Count", width: 110 },
-    { field: "publisherStatus", headerName: "Publisher Status", width: 140, renderCell: (params) => {
-        return (<Link
+    {
+      field: "publisherStatus",
+      headerName: "Publisher Status",
+      width: 140,
+      renderCell: (params) => {
+        return (
+          <Link
             to={{
               pathname: "/details",
               state: {
@@ -39,23 +43,32 @@ const Summary = () => {
             }}
           >
             {params.value}
-          </Link>)
-    }},
-    { field: "subscriberStatus", headerName: "Subscriber Status", width: 140 , renderCell: (params) => {
-      return (<Link
-          to={{
-            pathname: "/details",
-            state: {
-              ...state,
-              type: "Subscriber Status",
-              batchDate: params.row.batchDate,
-              batchVersion: params.row.batchVersion,
-            },
-          }}
-        >
-          {params.value}
-        </Link>)}
-    }
+          </Link>
+        );
+      },
+    },
+    {
+      field: "subscriberStatus",
+      headerName: "Subscriber Status",
+      width: 140,
+      renderCell: (params) => {
+        return (
+          <Link
+            to={{
+              pathname: "/details",
+              state: {
+                ...state,
+                type: "Subscriber Status",
+                batchDate: params.row.batchDate,
+                batchVersion: params.row.batchVersion,
+              },
+            }}
+          >
+            {params.value}
+          </Link>
+        );
+      },
+    },
   ];
 
   const rows = data.map((item, index) => {
@@ -65,7 +78,6 @@ const Summary = () => {
 
   let items = [];
   let paginationCount = Math.ceil(data.length / 10);
-  
 
   const handlePagination = (number) => {
     const start = number * 10 - 10;
@@ -144,12 +156,11 @@ const Summary = () => {
             label="To Date"
           />
         </Col>
-      </Row>
-      <Row style={{ marginBottom: "75px", textAlign: "center" }}>
         <Col>
           <Button label="Search" />
         </Col>
       </Row>
+      
       {/* <Row>
         <Table striped bordered hover>
           <thead>

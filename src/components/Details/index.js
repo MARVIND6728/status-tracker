@@ -110,12 +110,15 @@ const Details = () => {
         <Col>
           <Select items={state.pub_sub} changeHandler={handleD2} id="system" label="PUB_SUB" value={location.state.type}/>
         </Col>
-      </Row>
-      <Row style={{ marginBottom: "75px", textAlign: "center" }}>
         <Col>
-           <Button label="Search"/>
+          <Button label="Search"/>
         </Col>
       </Row>
+      {/* <Row style={{ marginBottom: "75px", textAlign: "center" }}>
+        <Col>
+           
+        </Col>
+      </Row> */}
       {/* <Row>
         <Table striped bordered hover>
           <thead>
@@ -156,6 +159,9 @@ const Details = () => {
       </Row> */}
       <Row>
         <DataTable columns={columns} rows={rows} />
+      </Row>
+      <Row style={{ marginTop: "50px", textAlign: "center" }}>
+        <Col><Button label="ReFlow" /></Col>
       </Row>
     </Container>
   );
