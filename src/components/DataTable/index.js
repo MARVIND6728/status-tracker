@@ -44,7 +44,7 @@ const DataTable = (props) => {
         columns={props.columns || columns}
         pageSize={10}
         rowsPerPageOptions={[10]}
-        checkboxSelection
+        checkboxSelection = {props.checkboxSelection}
         disableSelectionOnClick
       />
     </div>

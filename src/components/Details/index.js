@@ -158,7 +158,7 @@ const Details = () => {
         </Pagination>
       </Row> */}
       <Row>
-        <DataTable columns={columns} rows={rows} />
+        <DataTable columns={columns} rows={rows} checkboxSelection={true}/>
       </Row>
       <Row style={{ marginTop: "50px", textAlign: "center" }}>
         <Col><Button label="ReFlow" /></Col>

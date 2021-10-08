@@ -226,7 +226,7 @@ const Summary = () => {
         <Pagination>{items}</Pagination>
       </Row> */}
       <Row>
-        <DataTable columns={columns} rows={rows} />
+        <DataTable columns={columns} rows={rows} checkboxSelection={false}/>
       </Row>
     </Container>
   );
