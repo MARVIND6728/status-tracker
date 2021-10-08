@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 
 const BasicButton = (props) =>  {
   return (
-      <Button variant="contained" color="success">
+      <Button size="small" variant="contained" color="success">
         {props.label}
       </Button>
   );

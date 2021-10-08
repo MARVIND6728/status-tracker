@@ -1,32 +1,16 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/Header";
 import Details from "./components/Details";
 import Summary from "./components/Summary";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
-import AppBar from './components/AppBar';
+import AppBar from "./components/AppBar";
 function App() {
   return (
     <div>
-     
-      {/* <Header /> */}
-
       <Router>
-      <AppBar />
-        <Row>
-          {/* <Col lg={2}>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Details</Link>
-                </li>
-                <li>
-                  <Link to="/summary">Summary</Link>
-                </li>
-              </ul>
-            </nav>
-          </Col> */}
+        <AppBar />
+        <Row className="rowClass">
           <Col>
             <div>
               <Switch>

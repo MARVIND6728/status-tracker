@@ -3,9 +3,7 @@ import Select from "../Select";
 import {
   Container,
   Row,
-  Col,
-  Table,
-  Pagination,
+  Col
 } from "react-bootstrap";
 import targetStatusData from "../../targetStatusData.json";
 import publisherStatusData from "../../publisherStatusData.json";
@@ -19,10 +17,10 @@ import DataTable from "../DataTable";
 const Details = () => {
 
   
-
-  let items = [];
   const location = useLocation();
+
   const data = location.state && location.state.type === 'Publisher Status' ? publisherStatusData : targetStatusData;
+
   const [state, setState] = useState({
     flow: ["VAL_ID", "VAL_EOD"],
     system: [],
@@ -33,8 +31,6 @@ const Details = () => {
     end: 10,
   });
 
-
-  let paginationCount = Math.ceil(data.length / 10);
 
  const columns = [
     { field: "executionKey", headerName: "Execution Key", width: 120 },
@@ -52,32 +48,6 @@ const Details = () => {
     item["id"] = index;
     return item;
   });
-
-  const handlePagination = (number) => {
-    const start = number * 10 - 10;
-    const end = number * 10 > data.length ? data.length : number * 10;
-    const tableData = data.slice(start, end);
-
-    setState({
-      ...state,
-      start: start,
-      end: end,
-      tableData: tableData,
-      active: number,
-    });
-  };
-
-  for (let number = 1; number <= paginationCount; number++) {
-    items.push(
-      <Pagination.Item
-        key={number}
-        active={state.active === number}
-        onClick={() => handlePagination(number)}
-      >
-        {number}
-      </Pagination.Item>
-    );
-  }
 
   const handleD1 = (event) => {
     const systemValue =
@@ -113,53 +83,10 @@ const Details = () => {
           <Button label="Search"/>
         </Col>
       </Row>
-      {/* <Row style={{ marginBottom: "75px", textAlign: "center" }}>
-        <Col>
-           
-        </Col>
-      </Row> */}
-      {/* <Row>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Execution Key</th>
-              <th>Type CD</th>
-              <th>Target</th>
-              <th>FileName</th>
-              <th>Record Count</th>
-              <th>Attribute Count</th>
-              <th>Version</th>
-              <th>Where Condition</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {state.tableData &&
-              state.tableData.map((item) => {
-                return (
-                  <tr key={item.executionKey}>
-                    <td>{item.executionKey}</td>
-                    <td>{item.typeCD}</td>
-                    <td>{item.target}</td>
-                    <td>{item.fileName}</td>
-                    <td>{item.recordCount}</td>
-                    <td>{item.attributeCount}</td>
-                    <td>{item.version}</td>
-                    <td>{item.whereCondition}</td>
-                    <td>{item.status}</td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </Table>
-        <Pagination>
-          {items}
-        </Pagination>
-      </Row> */}
       <Row>
         <DataTable columns={columns} rows={rows} checkboxSelection={true}/>
       </Row>
-      <Row style={{ marginLeft : "500px", marginTop: "-50px", textAlign: "center", position: "absolute" }}>
+      <Row style={{  marginTop: "-45px", float : "right",marginRight : "180px"}}>
         <Col><Button label="ReFlow" /></Col>
       </Row>
     </Container>
