@@ -16,13 +16,14 @@ const BasicSelect = (props) => {
   return (
     <Box sx={{ minWidth: 50 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
+        <InputLabel size="small" id="select-label">{props.label}</InputLabel>
         <Select
           labelId="props.id"
           id="props.id"
           value={props.value || value}
           label={props.label}
           onChange={handleChange}
+          size="small"
         >
           {props.items &&
             props.items.map((item) => <MenuItem key={item} value={item}>{item}</MenuItem>)}

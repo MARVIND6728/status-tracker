@@ -90,8 +90,7 @@ const Details = () => {
     <Container
       style={{
         // border: "solid green 2px",
-        padding: "50px",
-        marginBottom: "50px",
+        padding: "50px"
       }}
     >
       <Row style={{ marginBottom: "50px" }}>
@@ -105,7 +104,7 @@ const Details = () => {
           <Date label="Batch Date" value={location.state.batchDate}/>
         </Col>
         <Col>
-          <TextField id="outlined-basic" label="Batch Version" variant="outlined" value={location.state.batchVersion} />
+          <TextField size="small" id="outlined-basic" label="Batch Version" variant="outlined" value={location.state.batchVersion} />
         </Col>
         <Col>
           <Select items={state.pub_sub} changeHandler={handleD2} id="system" label="PUB_SUB" value={location.state.type}/>
@@ -160,7 +159,7 @@ const Details = () => {
       <Row>
         <DataTable columns={columns} rows={rows} checkboxSelection={true}/>
       </Row>
-      <Row style={{ marginTop: "50px", textAlign: "center" }}>
+      <Row style={{ marginLeft : "500px", marginTop: "-50px", textAlign: "center", position: "absolute" }}>
         <Col><Button label="ReFlow" /></Col>
       </Row>
     </Container>

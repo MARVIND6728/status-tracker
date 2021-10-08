@@ -16,7 +16,7 @@ const  BasicDatePicker = (props) => {
           setValue(newValue);
         }}
         inputFormat = 'dd-MMM-yyyy'
-        renderInput={(params) => <TextField {...params} />}
+        renderInput={(params) => <TextField {...params} size="small"/>}
       />
     </LocalizationProvider>
   );

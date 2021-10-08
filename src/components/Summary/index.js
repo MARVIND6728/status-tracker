@@ -119,8 +119,7 @@ const Summary = () => {
     <Container
       style={{
         /*border: "solid green 2px",*/
-        padding: "50px",
-        marginBottom: "50px",
+        padding: "50px"
       }}
     >
       <Row style={{ marginBottom: "50px" }}>
