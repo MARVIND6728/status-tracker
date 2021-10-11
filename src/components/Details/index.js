@@ -59,7 +59,9 @@ const Details = () => {
     setState({ ...state, system: systemItems,selectedFlow : event.target.value});
   };
 
-  const handleD2 = (event) => {};
+  const handleD2 = (event) => {
+    setState({ ...state, selectedSystem: event.target.value })
+  };
 
 
   return (
