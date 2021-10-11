@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "../Select";
 import {
   Container,
@@ -24,12 +24,16 @@ const Details = () => {
   const [state, setState] = useState({
     flow: ["VAL_ID", "VAL_EOD"],
     system: [],
-    tableData: data.slice(0, 10),
     pub_sub: ["Publisher Status", "Subscriber Status"],
-    active: 1,
-    start: 0,
-    end: 10,
+    selectedFlow : '',
+    selectedSystem : ''
+
   });
+
+  useEffect(() => {
+    let newState = {...state, ...location.state}
+    setState(newState)
+  }, []);
 
 
  const columns = [
@@ -50,12 +54,14 @@ const Details = () => {
   });
 
   const handleD1 = (event) => {
-    const systemValue =
-      event.target.value === "VAL_EOD" ? ["ENDUR", "EPS"] : [];
-    setState({ ...state, system: systemValue });
+    console.log("handleD1");
+    const systemItems = event.target.value === "VAL_EOD" ? ["ENDUR", "EPS"] : [];
+    setState({ ...state, system: systemItems,selectedFlow : event.target.value});
   };
 
   const handleD2 = (event) => {};
+
+
   return (
     <Container
       style={{
@@ -65,19 +71,19 @@ const Details = () => {
     >
       <Row style={{ marginBottom: "50px" }}>
         <Col>
-          <Select items={state.flow} changeHandler={handleD1} id="flow" label="Flow" value={location.state.selectedFlow}/>
+          <Select items={state.flow} changeHandler={handleD1} id="flow" label="Flow" value={state.selectedFlow}/>
         </Col>
         <Col>
-          <Select items={location.state.system || state.system} changeHandler={handleD2} id="system" label="System" value={location.state.selectedSystem}/>
+          <Select items={state.system} changeHandler={handleD2} id="system" label="System" value={state.selectedSystem}/>
         </Col>
         <Col>
-          <Date label="Batch Date" value={location.state.batchDate}/>
+          <Date label="Batch Date" value={state.batchDate}/>
         </Col>
         <Col>
-          <TextField size="small" id="outlined-basic" label="Batch Version" variant="outlined" value={location.state.batchVersion} />
+          <TextField size="small" id="outlined-basic" label="Batch Version" variant="outlined" value={state.batchVersion} />
         </Col>
         <Col>
-          <Select items={state.pub_sub} changeHandler={handleD2} id="system" label="PUB_SUB" value={location.state.type}/>
+          <Select items={state.pub_sub} changeHandler={handleD2} id="system" label="PUB_SUB" value={state.type}/>
         </Col>
         <Col>
           <Button label="Search"/>

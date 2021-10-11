@@ -10,7 +10,7 @@ import DataTable from "../DataTable";
 const Summary = () => {
   const [state, setState] = useState({
     flow: ["VAL_ID", "VAL_EOD"],
-    system: [""],
+    system: [],
     tableData: data.slice(0, 10),
     active: 1,
     start: 0,
@@ -77,8 +77,8 @@ const Summary = () => {
   });
 
   const handleFlowChange = (event) => {
-    const systemValue =
-      event.target.value === "VAL_EOD" ? ["ENDUR", "EPS"] : [];
+    console.log("handleFlowChange");
+    const systemValue = event.target.value === "VAL_EOD" ? ["ENDUR", "EPS"] : [];
     setState({
       ...state,
       system: systemValue,
@@ -100,6 +100,7 @@ const Summary = () => {
             changeHandler={handleFlowChange}
             id="flow"
             label="Flow"
+            value = {state.selectedFlow}
           />
         </Col>
         <Col>
