@@ -16,27 +16,18 @@ import DataTable from "../DataTable";
 
 const Details = () => {
 
-  
-  const location = useLocation();
+  const publisherStatusCulumns = [
+    { field: "executionKey", headerName: "Execution Key", width: 120 },
+    { field: "typeCD", headerName: "Type CD", width: 90 },
+    { field: "fileName", headerName: "FileName", width: 100 },
+    { field: "recordCount", headerName: "Record Count", width: 120 },
+    { field: "attributeCount", headerName: "Attribute Count", width: 145 },
+    { field: "version", headerName: "Version", width: 90 },
+    { field: "whereCondition", headerName: "Where Condition", width: 350},
+    { field: "status", headerName: "Status", width: 170 }
+  ];
 
-  const data = location.state && location.state.type === 'Publisher Status' ? publisherStatusData : targetStatusData;
-
-  const [state, setState] = useState({
-    flow: ["VAL_ID", "VAL_EOD"],
-    system: [],
-    pub_sub: ["Publisher Status", "Subscriber Status"],
-    selectedFlow : '',
-    selectedSystem : ''
-
-  });
-
-  useEffect(() => {
-    let newState = {...state, ...location.state}
-    setState(newState)
-  }, []);
-
-
- const columns = [
+  const subscriberStatusColumns = [
     { field: "executionKey", headerName: "Execution Key", width: 120 },
     { field: "typeCD", headerName: "Type CD", width: 90 },
     { field: "target", headerName: "Target", width: 90 },
@@ -47,6 +38,27 @@ const Details = () => {
     { field: "whereCondition", headerName: "Where Condition", width: 350},
     { field: "status", headerName: "Status", width: 100 }
   ];
+
+  const location = useLocation();
+
+  const data = location.state && location.state.type === 'Publisher Status' ? publisherStatusData : targetStatusData;
+
+  const [state, setState] = useState({
+    flow: ["VAL_ID", "VAL_EOD"],
+    system: [],
+    pub_sub: ["Publisher Status", "Subscriber Status"],
+    selectedFlow : '',
+    selectedSystem : '',
+    selectedPub_Sub : ''
+  });
+
+  useEffect(() => {
+    let newState = {...state, ...location.state}
+    setState(newState)
+  }, []);
+
+
+ const columns =  location.state && location.state.type === 'Publisher Status' ? publisherStatusCulumns : subscriberStatusColumns ;
 
   const rows = data.map((item, index) => {
     item["id"] = index;
@@ -62,6 +74,8 @@ const Details = () => {
   const handleD2 = (event) => {
     setState({ ...state, selectedSystem: event.target.value })
   };
+
+  const handlePubSub = (event) => setState({...state, selectedPub_Sub : event.target.value})
 
 
   return (
@@ -85,7 +99,7 @@ const Details = () => {
           <TextField size="small" id="outlined-basic" label="Batch Version" variant="outlined" value={state.batchVersion} />
         </Col>
         <Col>
-          <Select items={state.pub_sub} changeHandler={handleD2} id="system" label="PUB_SUB" value={state.type}/>
+          <Select items={state.pub_sub} changeHandler={handlePubSub} id="system" label="PUB_SUB" value={state.type}/>
         </Col>
         <Col>
           <Button label="Search"/>
