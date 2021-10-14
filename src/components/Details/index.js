@@ -54,7 +54,7 @@ const Details = () => {
   useEffect(() => {
     let newState = { ...state, ...location.state };
     setState(newState);
-  }, []);
+  },[]);
 
   const columns =
     location.state && location.state.type === "Publisher Status"
@@ -97,7 +97,7 @@ const Details = () => {
       state.selectedRows &&
       state.selectedRows.map((rowId) => rows[rowId].executionKey);
     const options = {
-      method: "GET",
+      method: "PUT",
       headers: {
         componentType: state.selectedPub_Sub,
         batchExecutationKey: executionKeys.join(","),
