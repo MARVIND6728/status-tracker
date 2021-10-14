@@ -45,6 +45,10 @@ const DataTable = (props) => {
         pageSize={10}
         rowsPerPageOptions={[10]}
         checkboxSelection = {props.checkboxSelection}
+        disableSelectionOnClick
+        onSelectionModelChange = { (value) => {
+          props.getSelectedRowsId(value)
+        }}
       />
     </div>
   );
