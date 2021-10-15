@@ -86,6 +86,14 @@ const Summary = () => {
     });
   };
 
+  const searchHandler = async () => {
+    const options = {
+      method : "GET"
+    }
+    const response = await fetch("localhost:9090/bestatus?systemcd=ENDUR&flowcd=VAL_EOD&fromdate=13-AUG-2021&todate=13-AUG-2021",options);
+    console.log(response)
+  }
+
   return (
     <Container
       style={{
@@ -128,7 +136,7 @@ const Summary = () => {
           />
         </Col>
         <Col>
-          <Button label="Search" />
+          <Button label="Search" onClick={searchHandler}/>
         </Col>
       </Row>
       <Row>
