@@ -1,0 +1,146 @@
+---
+apiVersion: v1
+kind: Template
+metadata:
+  name: nagp-ilcntrl-batch-portal-deployment
+parameters:
+- description: The version for the application.
+  name: VERSION
+  value: @project.version@
+  required: true
+- description: The name for the application.
+  name: APPLICATION_NAME
+  value: nagp-ilcntrl-batch-portal
+  required: true
+- description: Image namespace
+  name: IMAGE_NAMESPACE
+  value: nagp-ilcntrl-batch-portal-bld
+  required: true
+- name: SERVER_CPU_LIMIT
+  value: 200m
+  required: true
+- name: SERVER_CPU_REQUEST
+  value: 200m
+  required: true
+- name: SERVER_MEMORY_LIMIT
+  value: 500Mi
+  required: true
+- name: SERVER_MEMORY_REQUEST
+  value: 250Mi
+  required: true
+- name: SERVER_REPLICAS
+  value: '1'
+  required: true
+- name: SERVICE_SECRET
+  value: nagp-ilcntrl-batch-portal-secret
+  required: true
+- name: REGISTRY
+  required: true
+- name: CONFIG_MAP
+  value: nagp-ilcntrl-batch-portal-config
+  required: true
+- name: SKIP_LOG_FORWARD
+  description: Flag to enable logs forwading from openshift
+  value: 'true'
+  required: false
+objects:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: "${APPLICATION_NAME}"
+    labels:
+      app: "${APPLICATION_NAME}"
+      version: "${VERSION}"
+  spec:
+    ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    selector:
+      deploymentconfig: "${APPLICATION_NAME}"
+    type: ClusterIP
+    sessionAffinity: None
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    name: "${APPLICATION_NAME}"
+    namespace: nagp-ilcntrl-batch-portal-int-01
+    labels:
+      app: "${APPLICATION_NAME}"
+      version: "${VERSION}"
+  spec:
+    strategy:
+      type: Recreate
+    triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: false
+        containerNames:
+        - "${APPLICATION_NAME}"
+        from:
+          kind: ImageStreamTag
+          namespace: "${IMAGE_NAMESPACE}"
+          name: "${APPLICATION_NAME}:${VERSION}"
+    replicas: "${{SERVER_REPLICAS}}"
+    test: false
+    selector:
+      app: "${APPLICATION_NAME}"
+      deploymentconfig: "${APPLICATION_NAME}"
+    template:
+      metadata:
+        creationTimestamp:
+        labels:
+          app: "${APPLICATION_NAME}"
+          deploymentconfig: "${APPLICATION_NAME}"
+        annotations:
+          openshift.io/container.nagp-ilcntrl-batch-portal.image.entrypoint: '["container-entrypoint","/usr/libexec/s2i/run"]'
+          fluentbit.io/exclude: "${SKIP_LOG_FORWARD}"
+      spec:
+        volumes:
+        - name: config-volume
+          configMap:
+            name: "${CONFIG_MAP}"
+        containers:
+        - name: "${APPLICATION_NAME}"
+          image: "${REGISTRY}/${IMAGE_NAMESPACE}/${APPLICATION_NAME}:${VERSION}"
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "${SERVER_CPU_LIMIT}"
+              memory: "${SERVER_MEMORY_LIMIT}"
+            requests:
+              cpu: "${SERVER_CPU_REQUEST}"
+              memory: "${SERVER_MEMORY_REQUEST}"
+          terminationMessagePath: "/dev/termination-log"
+          imagePullPolicy: Always
+          volumeMounts:
+          - name: config-volume
+            mountPath: "/opt/app-root/src/dist/nagp-ilcntrl-batch-portal/assets/config"
+          readinessProbe:
+            exec:
+              command:
+              - bash
+              - "-c"
+              - curl -s -w '%{http_code}' -o /dev/null localhost:8080/index.html |
+                grep 200
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          livenessProbe:
+            exec:
+              command:
+              - bash
+              - "-c"
+              - curl -s -w '%{http_code}' -o /dev/null localhost:8080/index.html |
+                grep 200
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+        restartPolicy: Always
+        terminationGracePeriodSeconds: 30
+        dnsPolicy: ClusterFirst
+        securityContext: {}

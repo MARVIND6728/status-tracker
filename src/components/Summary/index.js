@@ -11,10 +11,7 @@ const Summary = () => {
   const [state, setState] = useState({
     flow: ["VAL_ID", "VAL_EOD"],
     system: [],
-    tableData: data.slice(0, 10),
-    active: 1,
-    start: 0,
-    end: 10,
+    rows: null
   });
 
   const columns = [
@@ -71,10 +68,7 @@ const Summary = () => {
     },
   ];
 
-  const rows = data.map((item, index) => {
-    item["id"] = index;
-    return item;
-  });
+
 
   const handleFlowChange = (event) => {
     console.log("handleFlowChange");
@@ -87,11 +81,17 @@ const Summary = () => {
   };
 
   const searchHandler = async () => {
+    console.log("inside")
     const options = {
-      method : "GET"
+      method: "GET"
     }
-    const response = await fetch("localhost:9090/bestatus?systemcd=ENDUR&flowcd=VAL_EOD&fromdate=13-AUG-2021&todate=13-AUG-2021",options);
-    console.log(response)
+    const response = await fetch("http://localhost:9090/bestatus?systemcd=ENDUR&flowcd=VAL_EOD&fromdate=13-AUG-2021&todate=13-AUG-2021", options);
+    const data = await response.json();
+    const rows = data.map((item, index) => {
+      item["id"] = index;
+      return item;
+    });
+    setState({...state,rows : rows})
   }
 
   return (
@@ -108,7 +108,7 @@ const Summary = () => {
             changeHandler={handleFlowChange}
             id="flow"
             label="Flow"
-            value = {state.selectedFlow}
+            value={state.selectedFlow}
           />
         </Col>
         <Col>
@@ -136,12 +136,12 @@ const Summary = () => {
           />
         </Col>
         <Col>
-          <Button label="Search" onClick={searchHandler}/>
+          <Button label="Search" onClick={searchHandler} />
         </Col>
       </Row>
-      <Row>
-        <DataTable columns={columns} rows={rows} checkboxSelection={false} />
-      </Row>
+     { state.rows && <Row>
+        <DataTable columns={columns} rows={state.rows} checkboxSelection={false} />
+      </Row> }
     </Container>
   );
 };
