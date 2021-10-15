@@ -11,10 +11,7 @@ const Summary = () => {
   const [state, setState] = useState({
     flow: ["VAL_ID", "VAL_EOD"],
     system: [],
-    tableData: data.slice(0, 10),
-    active: 1,
-    start: 0,
-    end: 10,
+    rows : null
   });
 
   const columns = [
@@ -71,28 +68,36 @@ const Summary = () => {
     },
   ];
 
-  const rows = data.map((item, index) => {
-    item["id"] = index;
-    return item;
-  });
-
   const handleFlowChange = (event) => {
     console.log("handleFlowChange");
-    const systemValue = event.target.value === "VAL_EOD" ? ["ENDUR", "EPS"] : [];
+    const systemValue =
+      event.target.value === "VAL_EOD" ? ["ENDUR", "EPS"] : [];
     setState({
       ...state,
       system: systemValue,
       selectedFlow: event.target.value,
+      selectedSystem : ''
     });
   };
 
   const searchHandler = async () => {
     const options = {
-      method : "GET"
-    }
-    const response = await fetch("localhost:9090/bestatus?systemcd=ENDUR&flowcd=VAL_EOD&fromdate=13-AUG-2021&todate=13-AUG-2021",options);
-    console.log(response)
-  }
+      method: "GET",
+    };
+
+    const url = `http://localhost:9090/bestatus?systemcd=${state.selectedSystem || ''}&flowcd=${state.selectedFlow || ''}&fromdate=${state.fromDate || ''}&todate=${state.toDate || ''}`;
+    console.log(url);
+    const response = await fetch( url, options);
+    const data = await response;
+
+    const rows = data.map((item, index) => {
+      item["id"] = index;
+      return item;
+    });
+
+    setState({...state,rows:rows})
+
+  };
 
   return (
     <Container
@@ -108,7 +113,7 @@ const Summary = () => {
             changeHandler={handleFlowChange}
             id="flow"
             label="Flow"
-            value = {state.selectedFlow}
+            value={state.selectedFlow}
           />
         </Col>
         <Col>
@@ -124,23 +129,25 @@ const Summary = () => {
         <Col>
           <Date
             id="fromDate"
-            onChange={(e) => setState({ ...state, fromDate: e.target.value })}
+            onChange={(date) => { 
+              setState({ ...state, fromDate: date }) }}
             label="From Date"
           />
         </Col>
         <Col>
           <Date
             id="toDate"
-            onChange={(e) => setState({ ...state, toDate: e.target.value })}
+            onChange={(date) => { 
+              setState({ ...state, toDate: date }) }}
             label="To Date"
           />
         </Col>
         <Col>
-          <Button label="Search" onClick={searchHandler}/>
+          <Button label="Search" onClick={searchHandler} />
         </Col>
       </Row>
       <Row>
-        <DataTable columns={columns} rows={rows} checkboxSelection={false} />
+        {state.rows && <DataTable columns={columns} rows={state.rows} checkboxSelection={false} />}
       </Row>
     </Container>
   );
