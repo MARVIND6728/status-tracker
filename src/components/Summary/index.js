@@ -34,6 +34,7 @@ const Summary = () => {
               state: {
                 ...state,
                 type: "Publisher Status",
+                headerKey : params.row.headerKey,
                 batchDate: params.row.batchDate,
                 batchVersion: params.row.batchVersion,
               },
@@ -56,6 +57,7 @@ const Summary = () => {
               state: {
                 ...state,
                 type: "Subscriber Status",
+                headerKey : params.row.headerKey,
                 batchDate: params.row.batchDate,
                 batchVersion: params.row.batchVersion,
               },
