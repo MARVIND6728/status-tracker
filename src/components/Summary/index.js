@@ -86,18 +86,23 @@ const Summary = () => {
     
     const options = {
       method: "GET",
+      "Content-Type": 'application/json',
+      "Accept": 'application/json'
     };
 
     const url = `http://localhost:9090/bestatus?systemcd=${state.selectedSystem || ''}&flowcd=${state.selectedFlow || ''}&fromdate=${state.fromDate || ''}&todate=${state.toDate || ''}`;
     console.log(url);
     const response = await fetch( url, options);
+    console.log(response)
     const data = await response.json();
     console.log("inside",data)
-    const rows = data.map((item, index) => {
-      item["id"] = index;
-      return item;
-    });
-
+    let rows = null;
+    if( typeof(data) === 'object'){ 
+       rows = data.map((item, index) => {
+        item["id"] = index;
+        return item;
+      });
+    }
     setState({...state,rows:rows})
 
   };
@@ -150,7 +155,7 @@ const Summary = () => {
         </Col>
       </Row>
       <Row>
-        {state.rows && <DataTable columns={columns} rows={state.rows} checkboxSelection={false} />}
+        { state.rows && (state.rows.length !=0 ? <DataTable columns={columns} rows={state.rows} checkboxSelection={false} /> : <h1>No Data Found</h1>)}
       </Row>
     </Container>
   );
