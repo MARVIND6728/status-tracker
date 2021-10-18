@@ -52,22 +52,16 @@ const Details = () => {
     rows: null,
   });
 
-  const getData = async () => {
+  const getData = async (url) => {
     const options = {
       method: "GET",
     };
-
-    const url = `http://localhost:9090/pubsubstatus?systemcd=${
-      state.selectedSystem || ""
-    }&flowcd=${state.selectedFlow || ""}&batchdate=${
-      state.batchDate || ""
-    }&version=${state.batchVersion || ""}&pubsub=${
-      state.selectedPub_Sub || ""
-    }&headerkey=${state.headerKey || ""}`;
-
+    
+    console.log(url)
     const response = await fetch(url, options);
-    const data = await response;
+    const data = await response.json();
 
+    console.log(data);
     const rows = data.map((item, index) => {
       item["id"] = index;
       return item;
@@ -79,10 +73,19 @@ const Details = () => {
   useEffect(() => {
     let rowsData = null;
     if (location.state.type !== "") {
-      rowsData = getData();
+      const publishStatusUrl = `http://localhost:9090/publishstatus/${location.state.headerKey}`;
+      const targetStatusUrl = `http://localhost:9090/targetstatus/${location.state.headerKey}`;
+
+      const url = location.state.type === 'Publisher Status' ? publishStatusUrl : targetStatusUrl;
+      (async function() {
+        const data = await getData(url);
+        let newState = { ...state, ...location.state, rows: data };
+        console.log("newState",newState)
+        setState(newState);
+      })();
+
     }
-    let newState = { ...state, ...location.state, rows: rowsData };
-    setState(newState);
+    
   }, []);
 
   const columns =
@@ -111,7 +114,7 @@ const Details = () => {
   };
 
   const handlePubSub = (event) =>
-    setState({ ...state, selectedPub_Sub: event.target.value });
+    setState({ ...state, selectedPub_Sub: event.target.value === 'Publisher Status' ? 'publish' : 'subscribe' });
 
   const getSelectedRowsId = (rows) => {
     setState({
@@ -140,7 +143,17 @@ const Details = () => {
   };
 
   const searchHandler = async () => {
-    const rowsData = getData();
+    const url = `http://localhost:9090/pubsubstatus?systemcd=${
+      state.selectedSystem || ""
+    }&flowcd=${state.selectedFlow || ""}&batchdate=${
+      state.batchDate || ""
+    }&version=${state.batchVersion || ""}&pubsub=${
+      state.selectedPub_Sub || ""
+    }&headerkey=${
+      state.headerKey || ""}
+    `;
+
+    const rowsData = await getData(url);
     setState({ ...state, rows: rowsData });
   };
 
@@ -198,6 +211,19 @@ const Details = () => {
             id="system"
             label="PUB_SUB"
             value={state.type}
+          />
+        </Col>
+        <Col>
+          <TextField
+            size="small"
+            id="outlined-basic"
+            label="Header Key"
+            type = "number"
+            variant="outlined"
+            value={state.headerKey}
+            onChange={(e) =>
+              setState({ ...state, headerKey: e.target.value })
+            }
           />
         </Col>
         <Col>
