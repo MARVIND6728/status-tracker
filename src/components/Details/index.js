@@ -74,6 +74,7 @@ const Details = () => {
       ...state,
       system: systemItems,
       selectedFlow: event.target.value,
+      selectedSystem : ''
     });
   };
 

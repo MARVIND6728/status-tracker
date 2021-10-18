@@ -11,7 +11,7 @@ const Summary = () => {
   const [state, setState] = useState({
     flow: ["VAL_ID", "VAL_EOD"],
     system: [],
-    rows: null
+    rows : null
   });
 
   const columns = [
@@ -68,31 +68,37 @@ const Summary = () => {
     },
   ];
 
-
-
   const handleFlowChange = (event) => {
     console.log("handleFlowChange");
-    const systemValue = event.target.value === "VAL_EOD" ? ["ENDUR", "EPS"] : [];
+    const systemValue =
+      event.target.value === "VAL_EOD" ? ["ENDUR", "EPS"] : [];
     setState({
       ...state,
       system: systemValue,
       selectedFlow: event.target.value,
+      selectedSystem : ''
     });
   };
 
   const searchHandler = async () => {
-    console.log("inside")
+    
     const options = {
-      method: "GET"
-    }
-    const response = await fetch("http://localhost:9090/bestatus?systemcd=ENDUR&flowcd=VAL_EOD&fromdate=13-AUG-2021&todate=13-AUG-2021", options);
+      method: "GET",
+    };
+
+    const url = `http://localhost:9090/bestatus?systemcd=${state.selectedSystem || ''}&flowcd=${state.selectedFlow || ''}&fromdate=${state.fromDate || ''}&todate=${state.toDate || ''}`;
+    console.log(url);
+    const response = await fetch( url, options);
     const data = await response.json();
+    console.log("inside",data)
     const rows = data.map((item, index) => {
       item["id"] = index;
       return item;
     });
-    setState({...state,rows : rows})
-  }
+
+    setState({...state,rows:rows})
+
+  };
 
   return (
     <Container
@@ -124,14 +130,16 @@ const Summary = () => {
         <Col>
           <Date
             id="fromDate"
-            onChange={(e) => setState({ ...state, fromDate: e.target.value })}
+            onChange={(date) => { 
+              setState({ ...state, fromDate: date }) }}
             label="From Date"
           />
         </Col>
         <Col>
           <Date
             id="toDate"
-            onChange={(e) => setState({ ...state, toDate: e.target.value })}
+            onChange={(date) => { 
+              setState({ ...state, toDate: date }) }}
             label="To Date"
           />
         </Col>
@@ -139,9 +147,9 @@ const Summary = () => {
           <Button label="Search" onClick={searchHandler} />
         </Col>
       </Row>
-     { state.rows && <Row>
-        <DataTable columns={columns} rows={state.rows} checkboxSelection={false} />
-      </Row> }
+      <Row>
+        {state.rows && <DataTable columns={columns} rows={state.rows} checkboxSelection={false} />}
+      </Row>
     </Container>
   );
 };
