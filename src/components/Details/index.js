@@ -35,10 +35,10 @@ const Details = () => {
 
   const location = useLocation();
 
-  const data =
-    location.state && location.state.type === "Publisher Status"
-      ? publisherStatusData
-      : targetStatusData;
+  // const data =
+  //   location.state && location.state.type === "Publisher Status"
+  //     ? publisherStatusData
+  //     : targetStatusData;
 
   const [state, setState] = useState({
     flow: ["VAL_ID", "VAL_EOD"],
@@ -49,36 +49,64 @@ const Details = () => {
     selectedPub_Sub: "",
     selectedRows: [],
     disabledReflow: true,
+    rows: null,
   });
 
+  const getData = async () => {
+    const options = {
+      method: "GET",
+    };
+
+    const url = `http://localhost:9090/pubsubstatus?systemcd=${
+      state.selectedSystem || ""
+    }&flowcd=${state.selectedFlow || ""}&batchdate=${
+      state.batchDate || ""
+    }&version=${state.batchVersion || ""}&pubsub=${
+      state.selectedPub_Sub || ""
+    }&headerkey=${state.headerKey || ""}`;
+
+    const response = await fetch(url, options);
+    const data = await response;
+
+    const rows = data.map((item, index) => {
+      item["id"] = index;
+      return item;
+    });
+
+    return rows;
+  };
+
   useEffect(() => {
-    let newState = { ...state, ...location.state };
+    let rowsData = null;
+    if (location.state.type !== "") {
+      rowsData = getData();
+    }
+    let newState = { ...state, ...location.state, rows: rowsData };
     setState(newState);
-  },[]);
+  }, []);
 
   const columns =
     location.state && location.state.type === "Publisher Status"
       ? publisherStatusCulumns
       : subscriberStatusColumns;
 
-  const rows = data.map((item, index) => {
-    item["id"] = index;
-    return item;
-  });
+  // const rows = data.map((item, index) => {
+  //   item["id"] = index;
+  //   return item;
+  // });
 
-  const handleD1 = (event) => {
-    console.log("handleD1");
+  const handleFlowChange = (event) => {
     const systemItems =
       event.target.value === "VAL_EOD" ? ["ENDUR", "EPS"] : [];
     setState({
       ...state,
       system: systemItems,
       selectedFlow: event.target.value,
-      selectedSystem : ''
+      selectedSystem: "",
     });
   };
 
-  const handleD2 = (event) => {
+  const handleSystemChange = (event) => {
     setState({ ...state, selectedSystem: event.target.value });
   };
 
@@ -93,10 +121,10 @@ const Details = () => {
     });
   };
 
-  const reflowHandler = () => {
+  const reflowHandler = async () => {
     let executionKeys =
       state.selectedRows &&
-      state.selectedRows.map((rowId) => rows[rowId].executionKey);
+      state.selectedRows.map((rowId) => state.rows[rowId].executionKey);
     const options = {
       method: "PUT",
       headers: {
@@ -104,10 +132,16 @@ const Details = () => {
         batchExecutationKey: executionKeys.join(","),
       },
     };
-    fetch(
+    const response = await fetch(
       "http://test-republish-nagp-infohub-int-01.apps.testb.0001.o2.wu2.csl.cd2.bp.com/api/RepublishBatch/",
       options
-    ).then( response => console.log(response)).catch(error => console.log("error"));
+    );
+    console.log(response);
+  };
+
+  const searchHandler = async () => {
+    const rowsData = getData();
+    setState({ ...state, rows: rowsData });
   };
 
   return (
@@ -121,7 +155,7 @@ const Details = () => {
         <Col>
           <Select
             items={state.flow}
-            changeHandler={handleD1}
+            changeHandler={handleFlowChange}
             id="flow"
             label="Flow"
             value={state.selectedFlow}
@@ -130,14 +164,20 @@ const Details = () => {
         <Col>
           <Select
             items={state.system}
-            changeHandler={handleD2}
+            changeHandler={handleSystemChange}
             id="system"
             label="System"
             value={state.selectedSystem}
           />
         </Col>
         <Col>
-          <Date label="Batch Date" value={state.batchDate} />
+          <Date
+            label="Batch Date"
+            value={state.batchDate}
+            onChange={(date) => {
+              setState({ ...state, batchDate: date });
+            }}
+          />
         </Col>
         <Col>
           <TextField
@@ -146,6 +186,9 @@ const Details = () => {
             label="Batch Version"
             variant="outlined"
             value={state.batchVersion}
+            onChange={(e) =>
+              setState({ ...state, batchVersion: e.target.value })
+            }
           />
         </Col>
         <Col>
@@ -158,26 +201,32 @@ const Details = () => {
           />
         </Col>
         <Col>
-          <Button label="Search" />
+          <Button label="Search" onClick={searchHandler} />
         </Col>
       </Row>
-      <Row>
-        <DataTable
-          columns={columns}
-          rows={rows}
-          checkboxSelection={true}
-          getSelectedRowsId={getSelectedRowsId}
-        />
-      </Row>
-      <Row style={{ marginTop: "-45px", float: "right", marginRight: "180px" }}>
-        <Col>
-          <Button
-            label="ReFlow"
-            onClick={reflowHandler}
-            disabled={state.disabledReflow}
-          />
-        </Col>
-      </Row>
+      {state.rows && (
+        <React.Fragment>
+          <Row>
+            <DataTable
+              columns={columns}
+              rows={state.rows}
+              checkboxSelection={true}
+              getSelectedRowsId={getSelectedRowsId}
+            />
+          </Row>
+          <Row
+            style={{ marginTop: "-45px", float: "right", marginRight: "180px" }}
+          >
+            <Col>
+              <Button
+                label="ReFlow"
+                onClick={reflowHandler}
+                disabled={state.disabledReflow}
+              />
+            </Col>
+          </Row>
+        </React.Fragment>
+      )}
     </Container>
   );
 };
