@@ -90,7 +90,7 @@ const Summary = () => {
       "Accept": 'application/json'
     };
 
-    const url = `http://localhost:9090/bestatus?systemcd=${state.selectedSystem || ''}&flowcd=${state.selectedFlow || ''}&fromdate=${state.fromDate || ''}&todate=${state.toDate || ''}`;
+    const url = `http://nagp-ilcntrl-status-srvs-nagp-infohub-tst-01.apps.test-b.0001.o2.wu2.csl.cd2.bp.com/bestatus?systemcd=${state.selectedSystem || ''}&flowcd=${state.selectedFlow || ''}&fromdate=${state.fromDate || ''}&todate=${state.toDate || ''}`;
     console.log(url);
     const response = await fetch( url, options);
     console.log(response)

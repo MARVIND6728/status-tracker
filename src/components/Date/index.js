@@ -12,7 +12,7 @@ const  BasicDatePicker = (props) => {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
         label={props.label}
-        value={value}
+        value={props.value || value}
         onChange={(newValue) => {
           newValue= moment(newValue).format('DD-MMM-YYYY');
           setValue(newValue);

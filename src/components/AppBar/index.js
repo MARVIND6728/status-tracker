@@ -20,7 +20,7 @@ export default function ButtonAppBar() {
             sx={{ flexGrow: 1 }}
             style={{ color: "green", marginLeft: "10px", fontWeight: "bold" }}
           >
-            STATUS TRACKNG PORTAL
+            BATCH STATUS TRACKNG PORTAL
           </Typography>
           <Button><Link to="/" style={{color: "green"}}><h6 style={{fontWeight: "bolder"}}>Summary</h6></Link></Button>
           <Button><Link to={{

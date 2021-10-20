@@ -1,0 +1,53 @@
+---
+apiVersion: v1
+kind: Template
+metadata:
+  name: nagp-ilcntrl-batch-portal-build
+parameters:
+- description: The version of the application
+  name: VERSION
+  value: "2-SNAPSHOT"
+  required: true
+objects:
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    name: nagp-ilcntrl-batch-portal
+    labels:
+      app: nagp-ilcntrl-batch-portal
+  spec:
+    triggers:
+    - type: Generic
+      generic:
+        secret: 74ececed528534d7
+    - type: ImageChange
+      imageChange:
+        lastTriggeredImageID: docker-registry.default.svc:5000/ciao-bld/nodejs-10
+    - type: ConfigChange
+    source:
+      type: Binary
+    strategy:
+      type: Source
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: nodejs-10:latest
+    output:
+      to:
+        kind: ImageStreamTag
+        name: nagp-ilcntrl-batch-portal:${VERSION}
+    resources:
+      limits:
+        cpu: 500m
+        memory: 4Gi
+      requests:
+        cpu: 400m
+        memory: 3.8Gi
+    postCommit: {}
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: nagp-ilcntrl-batch-portal
+    labels:
+      app: nagp-ilcntrl-batch-portal
+  spec: {}

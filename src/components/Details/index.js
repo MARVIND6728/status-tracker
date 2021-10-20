@@ -8,6 +8,7 @@ import Date from "../Date";
 import Button from "../Button";
 import TextField from "@mui/material/TextField";
 import DataTable from "../DataTable";
+import moment from 'moment';
 
 const Details = () => {
   const publisherStatusCulumns = [
@@ -46,10 +47,13 @@ const Details = () => {
     pub_sub: ["Publisher Status", "Subscriber Status"],
     selectedFlow: "",
     selectedSystem: "",
+    type : "",
     selectedPub_Sub: "",
     selectedRows: [],
     disabledReflow: true,
     rows: null,
+    batchVersion : '',
+    headerKey : ''
   });
 
   const getData = async (url) => {
@@ -73,13 +77,17 @@ const Details = () => {
   useEffect(() => {
     let rowsData = null;
     if (location.state.type !== "") {
-      const publishStatusUrl = `http://localhost:9090/publishstatus/${location.state.headerKey}`;
-      const targetStatusUrl = `http://localhost:9090/targetstatus/${location.state.headerKey}`;
+      const publishStatusUrl = `http://nagp-ilcntrl-status-srvs-nagp-infohub-tst-01.apps.test-b.0001.o2.wu2.csl.cd2.bp.com/publishstatus/${location.state.headerKey}`;
+      const targetStatusUrl = `http://nagp-ilcntrl-status-srvs-nagp-infohub-tst-01.apps.test-b.0001.o2.wu2.csl.cd2.bp.com/targetstatus/${location.state.headerKey}`;
 
       const url = location.state.type === 'Publisher Status' ? publishStatusUrl : targetStatusUrl;
+      const pub_sub = location.state.type === 'Publisher Status' ? 'publish' : 'subscribe';
+
+      const batchDate = moment(location.state.batchDate).format('DD-MMM-YYYY');
+
       (async function() {
         const data = await getData(url);
-        let newState = { ...state, ...location.state, rows: data };
+        let newState = { ...state, ...location.state, rows: data,selectedPub_Sub:pub_sub, batchDate: batchDate };
         console.log("newState",newState)
         setState(newState);
       })();
@@ -114,7 +122,7 @@ const Details = () => {
   };
 
   const handlePubSub = (event) =>
-    setState({ ...state, selectedPub_Sub: event.target.value === 'Publisher Status' ? 'publish' : 'subscribe' });
+    setState({ ...state, selectedPub_Sub: event.target.value === 'Publisher Status' ? 'publish' : 'subscribe',type : event.target.value });
 
   const getSelectedRowsId = (rows) => {
     setState({
@@ -131,7 +139,7 @@ const Details = () => {
     const options = {
       method: "PUT",
       headers: {
-        componentType: state.selectedPub_Sub,
+        componentType: state.selectedPub_Sub === 'publish' ? 'PUB' : 'SUB',
         batchExecutationKey: executionKeys.join(","),
       },
     };
@@ -143,7 +151,7 @@ const Details = () => {
   };
 
   const searchHandler = async () => {
-    const url = `http://localhost:9090/pubsubstatus?systemcd=${
+    const url = `http://nagp-ilcntrl-status-srvs-nagp-infohub-tst-01.apps.test-b.0001.o2.wu2.csl.cd2.bp.com/pubsubstatus?systemcd=${
       state.selectedSystem || ""
     }&flowcd=${state.selectedFlow || ""}&batchdate=${
       state.batchDate || ""
@@ -198,10 +206,10 @@ const Details = () => {
             id="outlined-basic"
             label="Batch Version"
             variant="outlined"
-            value={state.batchVersion}
-            onChange={(e) =>
+             onChange={(e) =>
               setState({ ...state, batchVersion: e.target.value })
             }
+            value = {state.batchVersion}
           />
         </Col>
         <Col>
@@ -220,25 +228,25 @@ const Details = () => {
             label="Header Key"
             type = "number"
             variant="outlined"
-            value={state.headerKey}
             onChange={(e) =>
               setState({ ...state, headerKey: e.target.value })
             }
+            value = {state.headerKey}
           />
         </Col>
         <Col>
           <Button label="Search" onClick={searchHandler} />
         </Col>
       </Row>
-      {state.rows && (
+      {state.rows && (state.rows.length !=0 ? (
         <React.Fragment>
           <Row>
-            <DataTable
+          <DataTable
               columns={columns}
               rows={state.rows}
               checkboxSelection={true}
               getSelectedRowsId={getSelectedRowsId}
-            />
+            /> 
           </Row>
           <Row
             style={{ marginTop: "-45px", float: "right", marginRight: "180px" }}
@@ -251,7 +259,7 @@ const Details = () => {
               />
             </Col>
           </Row>
-        </React.Fragment>
+        </React.Fragment>) : <h1>No Data Found</h1>
       )}
     </Container>
   );
