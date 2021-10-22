@@ -9,6 +9,10 @@ import Button from "../Button";
 import TextField from "@mui/material/TextField";
 import DataTable from "../DataTable";
 import moment from 'moment';
+import Alert from '@mui/material/Alert';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Collapse from '@mui/material/Collapse';
 
 const Details = () => {
   const publisherStatusCulumns = [
@@ -53,7 +57,11 @@ const Details = () => {
     disabledReflow: true,
     rows: null,
     batchVersion : '',
-    headerKey : ''
+    headerKey : '',
+    open : false,
+    severity : 'success',
+    severityMessage : ''
+
   });
 
   const getData = async (url) => {
@@ -148,6 +156,10 @@ const Details = () => {
       options
     );
     console.log(response);
+
+    response === 'true' ? setState({...state,open : true,severity:"success", severityMessage: "Success"}) :
+    setState({...state,open:true,severity:"error", severityMessage: "Error"})
+   
   };
 
   const searchHandler = async () => {
@@ -238,7 +250,29 @@ const Details = () => {
           <Button label="Search" onClick={searchHandler} />
         </Col>
       </Row>
-      {state.rows && (state.rows.length !=0 ? (
+      <Row>
+      <Collapse in={state.open}>
+        <Alert
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setState({...state,open :false})
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2 }}
+          severity = {state.severity}
+        >
+          {state.severityMessage}
+        </Alert>
+      </Collapse>
+      </Row>
+      {state.rows && (state.rows.length !==0 ? (
         <React.Fragment>
           <Row>
           <DataTable
