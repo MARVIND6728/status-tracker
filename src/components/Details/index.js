@@ -16,23 +16,21 @@ import Collapse from '@mui/material/Collapse';
 
 const Details = () => {
   const publisherStatusCulumns = [
-    { field: "executionKey", headerName: "Execution Key", width: 120 },
-    { field: "typeCD", headerName: "Type CD", width: 90 },
-    { field: "fileName", headerName: "FileName", width: 100 },
-    { field: "recordCount", headerName: "Record Count", width: 120 },
-    { field: "attributeCount", headerName: "Attribute Count", width: 145 },
+    { field: "executionKey", headerName: "DTL Key", width: 120 },
+    { field: "typeCD", headerName: "Type Cd", width: 90 },
+    { field: "fileName", headerName: "File Name", width: 100 },  
+    { field: "attributeCount", headerName: "Entity Cnt", width: 145 },
     { field: "version", headerName: "Version", width: 90 },
     { field: "whereCondition", headerName: "Where Condition", width: 350 },
     { field: "status", headerName: "Status", width: 170 },
   ];
 
   const subscriberStatusColumns = [
-    { field: "executionKey", headerName: "Execution Key", width: 120 },
-    { field: "typeCD", headerName: "Type CD", width: 90 },
+    { field: "executionKey", headerName: "DTL Key", width: 120 },
+    { field: "typeCD", headerName: "Type Cd", width: 90 },
     { field: "target", headerName: "Target", width: 90 },
-    { field: "fileName", headerName: "FileName", width: 100 },
-    { field: "recordCount", headerName: "Record Count", width: 120 },
-    { field: "attributeCount", headerName: "Attribute Count", width: 145 },
+    { field: "fileName", headerName: "File Name", width: 100 },   
+    { field: "attributeCount", headerName: "Entity Cnt", width: 145 },
     { field: "version", headerName: "Version", width: 90 },
     { field: "whereCondition", headerName: "Where Condition", width: 350 },
     { field: "status", headerName: "Status", width: 100 },
@@ -85,8 +83,8 @@ const Details = () => {
   useEffect(() => {
     let rowsData = null;
     if (location.state.type !== "") {
-      const publishStatusUrl = `http://nagp-ilcntrl-status-srvs-nagp-infohub-tst-01.apps.test-b.0001.o2.wu2.csl.cd2.bp.com/publishstatus/${location.state.headerKey}`;
-      const targetStatusUrl = `http://nagp-ilcntrl-status-srvs-nagp-infohub-tst-01.apps.test-b.0001.o2.wu2.csl.cd2.bp.com/targetstatus/${location.state.headerKey}`;
+      const publishStatusUrl = `/publishstatus/${location.state.headerKey}`;
+      const targetStatusUrl = `/targetstatus/${location.state.headerKey}`;
 
       const url = location.state.type === 'Publisher Status' ? publishStatusUrl : targetStatusUrl;
       const pub_sub = location.state.type === 'Publisher Status' ? 'publish' : 'subscribe';
@@ -151,19 +149,27 @@ const Details = () => {
         batchExecutationKey: executionKeys.join(","),
       },
     };
-    const response = await fetch(
-      "http://test-republish-nagp-infohub-int-01.apps.testb.0001.o2.wu2.csl.cd2.bp.com/api/RepublishBatch/",
-      options
-    );
-    console.log(response);
 
-    response === 'true' ? setState({...state,open : true,severity:"success", severityMessage: "Success"}) :
-    setState({...state,open:true,severity:"error", severityMessage: "Error"})
+    try {
+      const response = await fetch(
+        "/api/RepublishBatch",
+        options
+      );
+      const output = await response.json();
+      console.log("output:::",output)
+  
+      output? setState({...state,open : true,severity:"success", severityMessage: "Success"}) :
+      setState({...state,open:true,severity:"error", severityMessage: "Error"})
+    }catch(error){
+      console.log(error);
+      setState({...state,open:true,severity:"error", severityMessage: "Error"});
+    }
+   
    
   };
 
   const searchHandler = async () => {
-    const url = `http://nagp-ilcntrl-status-srvs-nagp-infohub-tst-01.apps.test-b.0001.o2.wu2.csl.cd2.bp.com/pubsubstatus?systemcd=${
+    const url = `/pubsubstatus?systemcd=${
       state.selectedSystem || ""
     }&flowcd=${state.selectedFlow || ""}&batchdate=${
       state.batchDate || ""
@@ -184,6 +190,7 @@ const Details = () => {
         padding: "50px",
       }}
     >
+      <Row style={{textAlign:"center", color : "green",marginBottom: "50px"}}><h3>BATCH DETAILS</h3></Row>
       <Row style={{ marginBottom: "50px" }}>
         <Col>
           <Select

@@ -38,7 +38,7 @@ const rows = [
 
 const DataTable = (props) => {
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: 650, width: '100%' }}>
       <DataGrid
         rows={props.rows || rows}
         columns={props.columns || columns}
